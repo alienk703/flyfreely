@@ -7,11 +7,11 @@ $(function() {
 });
 
 
-var Finder = {
+// var Finder = {
 
-  initialize: function(){
+function flightSearch(){
 
-    var self = this;
+  var self = this;
     $("form").on('submit', function(event){
       event.preventDefault();
 
@@ -20,73 +20,65 @@ var Finder = {
       self.depdate = $("#datepicker").val();
       self.arrdate = $(".datepicker").val();
       self.budget = $("#budget").val();
-      self.getDestination();     
-    });
-  },
-  getDestination: function(){
-        console.log("get dest");
+      console.log("get dest");
 
      var departure = $("#departure").val();
      var arrival = $("#arrival").val();
      var depdate = $("#datepicker").val();
+     var arrdate = $(".datepicker").val();
      var passenger = $(".passenger").val();
      var budget = $("#budget").val();
 
-
     self = this
-    // results
+
     var htmlString = "<p>Results: </p><ul>";
     $.ajax({
-      url: "https://www.googleapis.com/qpxExpress/v1/trips/search?fields=trips&key=AIzaSyCtvfwSNDdpQS3PCIoLnJRVcQsMDOGXMa0",
-      dataType: "application/json",
+      url: 'https://www.googleapis.com/qpxExpress/v1/trips/search?fields=trips&key=AIzaSyCtvfwSNDdpQS3PCIoLnJRVcQsMDOGXMa0',
+      method: 'POST',
+      dataType: 'json',
       contentType: 'application/json',
       data: JSON.stringify(
-        {
-          "request": {
-            "maxPrice": budget.to_s,
-            "slice": [
-              {
-                "origin": departure,
-                "destination": arrival,
-                "date": depdate
-              }
-            ],
-            "passengers": {
-                 "adultCount": passenger,
-              // "infantInLapCount": 0,
-              // "infantInSeatCount": 0,
-              // "childCount": 0,
-              // "seniorCount": 0
+        { 'request': {
+          'passengers': {
+            "kind": "qpxexpress#passengerCounts",
+            "adultCount": passenger
+          },
+          'slice': [
+            {
+              "kind": "qpxexpress#sliceInput",
+              "origin": departure,
+              "destination": arrival,
+              "date": depdate,
+              "maxStops": 0
             },
-             "solutions": 50,
-            // "refundable": false
+            {
+              "kind": "qpxexpress#sliceInput",
+              "origin": arrival,
+              "destination": departure,
+              "date": arrdate,
+              "maxStops": 0,
+            }
+          ],
+          'solutions': 50
           }
         }
       ),
-      method: "POST",
-
       success: function(data){
         console.log(data);
         console.log("something");
-
-        htmlString += "<li>" + results + "</li>";
-        htmlString += "</ul>";
-        self.render(htmlString);
       },
 
-      clearData: function(){
-        $(".results").html("");
-      },
+      // clearData: function(){
+      //   $(".results").html("");
+      // },
 
       failure: function(){
         console.log("Fuck me :(");
       },
-      done: function(){
-        colsole.log("done");
-      }
     });
-  }
+  });
 }
+
 
    function render(htmlString){
         this.clearResults();
@@ -95,5 +87,5 @@ var Finder = {
 
 
 $(document).ready(function(){
-  Finder.initialize();
+    flightSearch();
 });
