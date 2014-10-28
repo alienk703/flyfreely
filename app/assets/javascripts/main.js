@@ -39,6 +39,7 @@ function flightSearch(){
       contentType: 'application/json',
       data: JSON.stringify(
         { 'request': {
+          'maxPrice': budget.to_s,
           'passengers': {
             "kind": "qpxexpress#passengerCounts",
             "adultCount": passenger
@@ -59,6 +60,7 @@ function flightSearch(){
               "maxStops": 0,
             }
           ],
+          'maxPrice': budget.to_s,
           'solutions': 50
           }
         }
