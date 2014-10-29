@@ -38,9 +38,7 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-group :production do
-  gem 'rails_12factor'
-end
+gem 'rails_12factor', group: :production
 
 group :production do
   gem 'rails_log_stdout',           github: 'heroku/rails_log_stdout'
