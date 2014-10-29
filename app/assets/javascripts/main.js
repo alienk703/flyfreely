@@ -71,21 +71,29 @@ function flightSearch(){
         console.log(data);
         console.log("something");
 
-        for (var i = 0; i < data.trips.data.carrier.length; i ++)
-        for (var x = 0; x < data.trips.tripOption.length; x ++)
-          for (var y = 0; y < data.trips.tripOption.length; y ++){
-
-          var destin = data.trips.data.city[0].name;
+        for (var i = 0; i < data.trips.data.carrier.length; i ++) {
           var carrier = data.trips.data.carrier[i].name;
-          var price = data.trips.tripOption[x].saleTotal;
-          var flightNumber = data.trips.tripOption[y].slice[y].segment[y].bookingCode;
-          var arrivalTime = trips.tripOption[].slice[].segment[].leg[].arrivalTime;
-          var departureTime = trips.tripOption[].slice[].segment[].leg[].departureTime
-
-          htmlString += '<li>' + destin + ':' + carrier + ":"  + price + "<li>";
-          htmlString += "</ul>";
-          self.render(htmlString);
         }
+        for (var x = 0; x < data.trips.tripOption.length; x ++) {
+          var price = data.trips.tripOption[x].saleTotal;
+          // console.log(data.trips.tripOption[x])
+
+          for (var y = 0; y < data.trips.tripOption[x].slice.length; y++){
+            // console.log(data.trips.tripOption[x].slice[y])
+
+            for (var b=0; b < data.trips.tripOption[x].slice[y].segment[0].leg.length; b++){
+              var aircraft = data.trips.tripOption[x].slice[y].segment[0].leg[b].aircraft;
+              var arrivalTime = data.trips.tripOption[x].slice[y].segment[0].leg[b].arrivalTime;
+              var departureTime = data.trips.tripOption[x].slice[y].segment[0].leg[b].departureTime
+               htmlString += '<li>' + data.trips.data.city + ':' + carrier + ":" + aircraft + ":" + departureTime + ":" + arrivalTime + ":" + price + "<li>";
+            }
+          }
+        }
+
+  
+        htmlString += "</ul>";
+        self.render(htmlString); 
+        console.log(htmlString);
       },
 
         render: function(htmlString){
