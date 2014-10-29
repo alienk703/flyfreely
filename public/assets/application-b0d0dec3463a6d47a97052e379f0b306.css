@@ -5,7 +5,7 @@ h1, h3, form {
 
 /* line 5, /Users/hkkim1/dev/flyfree/app/assets/stylesheets/style.scss */
 body {
-  background-image: url("/assets/flyfreely.svg");
+  background-image: url("/assets/flyfreely.png");
   margin: 0 auto;
   background-size: 100%;
   background-position: fixed;
