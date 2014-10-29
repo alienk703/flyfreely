@@ -28,12 +28,12 @@ function flightSearch(){
      var arrdate = $(".datepicker").val();
      var passenger = $(".passenger").val();
      var budget = $("#budget").val();
-     var airportArray = ['BHM','ANC','PHX','LIT','LAX','SFO','DEN','BDL','MIA','MCO','TPA','ATL','HNL','BOI','ORD','IND','DSM','ICT','SDF','MSY','PWM','BWI','BOS','DTW','MSP','JAN','STL','BZN','OMA','LAS','MHT','EWR','ABQ','JFK','LGA','CLT','RDU','FAR','CLE','CMH','OKC','TUL','PDX','PHL','PIT','PVD','CHS','CAE','GSP','MYR','FSD','MEM','BNA','AUS','DAL','ELP','IAH','HOU','SAT','SLC','BTV','IAD','DCA','SEA','CRW','MKE','JAC','SJU']
+     var airportArray = ['BHM','ANC','PHX', 'LAX','SFO','DEN','BDL','MIA','MCO','ATL','HNL','ORD','IND','DSM','CVG','MSY','PWM','BWI','BOS','DTW','MSP','STL','OMA','LAS','EWR','ABQ','JFK','LGA','CLT','RDU','CLE','CMH','OKC','TUL','PDX','PHL','PIT','CHS','CAE','GSP','MYR','MEM','BNA','DAL','ELP','IAH','SAT','SLC','IAD','DCA','SEA','MKE','JAC','SJU']
      var airport = airportArray[Math.floor(Math.random()*airportArray.length)];
 
     self = this
 
-    var htmlString = "<p>Results: </p><ul>";
+    var htmlString = "<p>Why dont you Try..: </p><ul>";
     $.ajax({
       url: 'https://www.googleapis.com/qpxExpress/v1/trips/search?fields=trips&key=AIzaSyBFA3QnRcB-HKcCnCA_3dEjtAYln3zGXBU',
       method: 'POST',
@@ -62,7 +62,7 @@ function flightSearch(){
             }
           ],
           'maxPrice': budget.to_s,
-          'solutions': 100
+          'solutions': 10
           }
         }
       ),
@@ -85,7 +85,7 @@ function flightSearch(){
               var aircraft = data.trips.tripOption[x].slice[y].segment[0].leg[b].aircraft;
               var arrivalTime = data.trips.tripOption[x].slice[y].segment[0].leg[b].arrivalTime;
               var departureTime = data.trips.tripOption[x].slice[y].segment[0].leg[b].departureTime
-               htmlString += '<li>' + data.trips.data.city + ':' + carrier + ":" + aircraft + ":" + departureTime + ":" + arrivalTime + ":" + price + "<li>";
+               htmlString += '<li>' + data.trips.data.city[0].name + ': ' + carrier + ' ' + aircraft + ', Price: ' + price + '</br> Depart:' + departureTime + '</br> Arrive: ' + arrivalTime + '<li></br>';
             }
           }
         }

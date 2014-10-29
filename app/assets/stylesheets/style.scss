@@ -21,18 +21,23 @@ body {
   padding: .8em;
 }
 
+.results li{
+
+  list-style-type: none;
+}
+
 .results {
   font-family: 'Arvo', serif;
   float: left;
-  list-style-type: none;
   background-color: rgba(247, 90, 47, 0.7);
   margin-left: 4em;
   margin-top: 3em;
   border:  solid red;
   border-radius: 2em;
-  width: 25em;
+  width: 35em;
   padding: .8em;
 }
+
 
 button {
   -moz-box-shadow: 3px 4px 0px 0px #1564ad;
@@ -77,4 +82,13 @@ button:active {
   top:1px;
 }
 
+@media (max-width:550px){
+  li {
+    font-size: 80%;
+  }
+
+  .results {
+    width: 25em;
+  }
+}
 
