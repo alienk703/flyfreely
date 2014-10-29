@@ -33,7 +33,7 @@ function flightSearch(){
 
     self = this
 
-    var htmlString = "<p>Why dont you Try..: </p><ul>";
+    var htmlString = "<p>Why don't we take you to.... </p><ul>";
     $.ajax({
       url: 'https://www.googleapis.com/qpxExpress/v1/trips/search?fields=trips&key=AIzaSyBFA3QnRcB-HKcCnCA_3dEjtAYln3zGXBU',
       method: 'POST',
@@ -61,7 +61,7 @@ function flightSearch(){
               "maxStops": 0,
             }
           ],
-          'maxPrice': budget.to_s,
+          // 'maxPrice': budget.to_s,
           'solutions': 10
           }
         }
