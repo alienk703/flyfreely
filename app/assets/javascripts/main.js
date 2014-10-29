@@ -72,11 +72,15 @@ function flightSearch(){
         console.log("something");
 
         for (var i = 0; i < data.trips.data.carrier.length; i ++)
-        for (var x = 0; x < data.trips.tripOption.length; x ++){
+        for (var x = 0; x < data.trips.tripOption.length; x ++)
+          for (var y = 0; y < data.trips.tripOption.length; y ++){
 
           var destin = data.trips.data.city[0].name;
           var carrier = data.trips.data.carrier[i].name;
           var price = data.trips.tripOption[x].saleTotal;
+          var flightNumber = data.trips.tripOption[y].slice[y].segment[y].bookingCode;
+          var arrivalTime = trips.tripOption[].slice[].segment[].leg[].arrivalTime;
+          var departureTime = trips.tripOption[].slice[].segment[].leg[].departureTime
 
           htmlString += '<li>' + destin + ':' + carrier + ":"  + price + "<li>";
           htmlString += "</ul>";
