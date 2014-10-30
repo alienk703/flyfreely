@@ -23,9 +23,9 @@ function flightSearch(){
 
     self = this
 
-    var htmlString = "<p>Why don't we take you to.... </p><ul>";
+    var htmlString = "<h4>Why don't we take you to.... </h4><ul>";
     $.ajax({
-      url: 'https://www.googleapis.com/qpxExpress/v1/trips/search?fields=trips&key='+ "<%= Rails.application.secrets.google_api_key%>" ,
+      url: 'https://www.googleapis.com/qpxExpress/v1/trips/search?fields=trips&key=AIzaSyBFA3QnRcB-HKcCnCA_3dEjtAYln3zGXBU' ,
       method: 'POST',
       dataType: 'json',
       contentType: 'application/json',
