@@ -26,13 +26,11 @@ body {
 
 .results {
   font-family: 'Arvo', serif;
+  font-size: 200%;
+  font-weight: bold;
   float: left;
-  background-color: rgba(247, 90, 47, 0.7);
-  margin-left: 4em;
-  margin-top: 3em;
-  border:  solid red;
-  border-radius: 2em;
-  width: 35em;
+  margin-left: 3em;
+  margin-top: .5em;
   padding: .8em;
 
 }
