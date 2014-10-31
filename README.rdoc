@@ -1,28 +1,23 @@
-== README
+== Fly Free.ly
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Fly Free.y is a flight search app that take you to an random destination.
+It is perfect for times when you have some days off, but have no idea where to go.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby 2.1.2
+* Rails 4.1.6
+* Devise Gem installed
+* Google QPX Express API (50Queries per day)
 
-* System dependencies
+==User Stories
+* Able to Search flights
+* Able to get information back via AJAX Call; 
+Date, Time, Airline, Destination, Price
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+== Things to be Done
+* Sign Up to save favorite flights
+* Automatically destroy data if the departure date passes
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+
