@@ -2,7 +2,7 @@ function flightSearch(){
 
  
   var self = this;
-    $("form").on('submit', function(event){
+    $("#searchflight").on('submit', function(event){
       event.preventDefault();
 
       self.departure = $("#departure").val();
@@ -25,7 +25,7 @@ function flightSearch(){
 
     var htmlString = "<h4>Why don't we take you to.... </h4><ul>";
     $.ajax({
-      url: 'https://www.googleapis.com/qpxExpress/v1/trips/search?fields=trips&key=AIzaSyBFA3QnRcB-HKcCnCA_3dEjtAYln3zGXBU' ,
+      url: 'https://www.googleapis.com/qpxExpress/v1/trips/search?fields=trips&key=AIzaSyATGEf7SunalI8vISMW0iVcNNHqKPtuNmw' ,
       method: 'POST',
       dataType: 'json',
       contentType: 'application/json',
@@ -79,17 +79,17 @@ function flightSearch(){
               var departureTime = data.trips.tripOption[x].slice[y].segment[0].leg[b].departureTime
               console.log("b: " + b + ", y: " + y + ", x: " + x);
               if (y  === 0){
-                htmlString += "<div class='flights'>" + '<li>' + data.trips.data.city[0].name + ': ' + carrier + ' ' + aircraft + ', Price: ' + price + '</br> Depart:' + departureTime + '</br> Arrive: ' + arrivalTime + '</li></br>';
+                htmlString += "<div class='flights'>" + '<li><span id="city">' + data.trips.data.city[0].name + '</span>: <span id="carrier">' + carrier + ' </span> <span id="aircraft">' + aircraft + '</span>, <span class="price">Price: ' + price + '</span></br> <span id="depart">Depart:' + departureTime + '</span></br> <span id="arrive">Arrive: ' + arrivalTime + '</span></li></br>';
                 // console.log(b + ": " + htmlString);
               } else {
-                htmlString += '<li>' + data.trips.data.city[0].name + ': ' + carrier + ' ' + aircraft + ', Price: ' + price + '</br> Depart:' + departureTime + '</br> Arrive: ' + arrivalTime + '</li></br></div>';
+                htmlString += '<li><span id="city">' + data.trips.data.city[0].name + '</span>: <span id="carrier">' + carrier + ' </span> <span id="aircraft">' + aircraft + '</span>, <span class="price">Price: ' + price + '</span></br> <span id="depart">Depart:' + departureTime + '</span></br> <span id="arrive">Arrive: ' + arrivalTime + '</li></br><button class="save">Save</button></div>';
+
                 // console.log(b + ": " + htmlString);
               }
           
             }
           }
         }
-
   
         htmlString += "</ul>";
         self.render(htmlString); 
@@ -115,6 +115,22 @@ function flightSearch(){
 
     });
   });
+
+  $('.save').submit(function() {  
+    event.preventDefault()
+    var valuesToSubmit = $(this).save();
+    $.ajax({
+        type: "POST",
+        url: "/trips", //sumbits it to the given url of the form
+        data: valuesToSubmit,
+        dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
+    }).success(function(json){
+        console.log("saved");
+        //act on result.
+    });
+    return false; // prevents normal behaviour
+  });
+
 }
 
 $(document).ready(function(){
