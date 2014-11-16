@@ -81,7 +81,7 @@ function flightSearch(){
                 htmlString += "<div class='flights'>" + '<li><span id="city">' + data.trips.data.city[0].name + '</span>: <span id="carrier">' + carrier + ' </span> <span id="aircraft">' + aircraft + '</span>, <span class="price">Price: ' + price + '</span></br> <span id="depart">Depart:' + departureTime + '</span></br> <span id="arrive">Arrive: ' + arrivalTime + '</span></li></br>';
                 // console.log(b + ": " + htmlString);
               } else {
-                htmlString += '<li><span id="city">' + data.trips.data.city[0].name + '</span>: <span id="carrier">' + carrier + ' </span> <span id="aircraft">' + aircraft + '</span>, <span class="price">Price: ' + price + '</span></br> <span id="depart">Depart:' + departureTime + '</span></br> <span id="arrive">Arrive: ' + arrivalTime + '</li></br><button class="save">Save</button></div>';
+                htmlString += '<li><span id="city">' + data.trips.data.city[0].name + '</span>: <span id="carrier">' + carrier + ' </span> <span id="aircraft">' + aircraft + '</span>, <span class="price">Price: ' + price + '</span></br> <span id="depart">Depart:' + departureTime + '</span></br> <span id="arrive">Arrive: ' + arrivalTime + '</li></br></div>';
 
                 // console.log(b + ": " + htmlString);
               }
@@ -115,21 +115,21 @@ function flightSearch(){
   });
 
 
-  $('.save').submit(function() {  
-    var city 
-    event.preventDefault()
-    var valuesToSubmit = $(this).save();
-    $.ajax({
-        method: "POST",
-        url: "/trips", //sumbits it to the given url of the form
-        data: {request: {city: city}}
-        dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
-    }).success(function(json){
-        console.log("saved");
-        //act on result.
-    });
-    return false; // prevents normal behaviour
-  });
+  // $('.save').submit(function() {  
+  //   var city 
+  //   event.preventDefault()
+  //   var valuesToSubmit = $(this).save();
+  //   $.ajax({
+  //       method: "POST",
+  //       url: "/trips", //sumbits it to the given url of the form
+  //       data: {request: {city: city}}
+  //       dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
+  //   }).success(function(json){
+  //       console.log("saved");
+  //       //act on result.
+  //   });
+  //   return false; // prevents normal behaviour
+  // });
 
 }
 
