@@ -10,7 +10,7 @@ function flightSearch(){
       self.depdate = $("#datepicker").val();
       self.arrdate = $(".datepicker").val();
       self.budget = $("#budget").val();
-      console.log("get dest");
+
 
      var departure = $("#departure").val();
      var arrival = $("#arrival").val();
@@ -58,8 +58,7 @@ function flightSearch(){
       ),
       success: function(data){
         var self = this;
-        console.log(data);
-        console.log("something");
+
 
         for (var i = 0; i < data.trips.data.carrier.length; i ++) {
           var carrier = data.trips.data.carrier[i].name;
@@ -71,13 +70,13 @@ function flightSearch(){
           for (var y = 0; y < data.trips.tripOption[x].slice.length; y++){
             // console.log(data.trips.tripOption[x].slice[y])
 
-            console.log("TESTESTESTEST");
+
 
             for (var b=0; b < data.trips.tripOption[x].slice[y].segment[0].leg.length; b++){
               var aircraft = data.trips.tripOption[x].slice[y].segment[0].leg[b].aircraft;
               var arrivalTime = data.trips.tripOption[x].slice[y].segment[0].leg[b].arrivalTime;
               var departureTime = data.trips.tripOption[x].slice[y].segment[0].leg[b].departureTime
-              console.log("b: " + b + ", y: " + y + ", x: " + x);
+              // console.log("b: " + b + ", y: " + y + ", x: " + x);
               if (y  === 0){
                 htmlString += "<div class='flights'>" + '<li><span id="city">' + data.trips.data.city[0].name + '</span>: <span id="carrier">' + carrier + ' </span> <span id="aircraft">' + aircraft + '</span>, <span class="price">Price: ' + price + '</span></br> <span id="depart">Depart:' + departureTime + '</span></br> <span id="arrive">Arrive: ' + arrivalTime + '</span></li></br>';
                 // console.log(b + ": " + htmlString);
@@ -110,19 +109,20 @@ function flightSearch(){
       // },
 
       failure: function(){
-        console.log("Fuck me :(");
       }
 
     });
   });
 
+
   $('.save').submit(function() {  
+    var city 
     event.preventDefault()
     var valuesToSubmit = $(this).save();
     $.ajax({
-        type: "POST",
+        method: "POST",
         url: "/trips", //sumbits it to the given url of the form
-        data: valuesToSubmit,
+        data: {request: {city: city}}
         dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
     }).success(function(json){
         console.log("saved");
