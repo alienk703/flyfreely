@@ -1,5 +1,5 @@
 h1, h3, form, p {
-  font-family: 'Hammersmith One', sans-serif;
+  font-family: 'Georgia', sans-serif;
 }
 
 
@@ -11,12 +11,12 @@ h1, h3, form, p {
 }*/
 
 .input {
+  z-index: 0;
   float: left;
-  background-color: rgba(247, 90, 47, 0.7);
+/*  background-color: rgba(247, 90, 47, 0.7);*/
   margin-left: 4em;
   margin-top: 3em;
-  border:  solid red;
-  border-radius: 2em;
+  border:  solid ;
   width: 25em;
   padding: .8em;
 }
