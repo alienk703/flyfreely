@@ -1,5 +1,5 @@
 h1, h3, form, p {
-  font-family: 'Hammersmith One', sans-serif;
+ font-family: 'Questrial', sans-serif;
 }
 
 
@@ -10,13 +10,27 @@ h1, h3, form, p {
   background-position: fixed;
 }*/
 
+h1 {
+  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+p {
+  padding: 12px;
+  font-size: 18px;
+}
+
 .input {
-  float: left;
-  background-color: rgba(247, 90, 47, 0.7);
-  margin-left: 4em;
+/*  float: left;*/
+  background-color: rgba(240, 240, 240, 0.9);
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
   margin-top: 3em;
-  border:  solid red;
-  border-radius: 2em;
+  border:  solid #f;
+/*  border-radius: 2em;*/
   width: 25em;
   padding: .8em;
 }
@@ -36,10 +50,9 @@ h1, h3, form, p {
 }
 
 .flights {
-  background-color: rgba(247, 90, 47, 0.7);
-
+  background-color: rgba(240, 240, 240, 0.9);
   margin-top: 2em;
-  border:  solid red;
+/*  border:  solid red;*/
   border-radius: 2em;
   width: 30em;
   padding: .8em;
