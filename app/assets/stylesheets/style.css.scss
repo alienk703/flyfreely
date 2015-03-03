@@ -1,9 +1,5 @@
 h1, h3, form, p {
-<<<<<<< HEAD
  font-family: 'Questrial', sans-serif;
-=======
-  font-family: 'Georgia', sans-serif;
->>>>>>> 7f062a34ecba3c251ab92a9f4f7c1e081e7c58a8
 }
 
 
@@ -27,7 +23,6 @@ p {
 }
 
 .input {
-<<<<<<< HEAD
 /*  float: left;*/
   background-color: rgba(240, 240, 240, 0.9);
   margin-left: auto;
@@ -35,17 +30,6 @@ p {
   display: block;
   margin-top: 3em;
   border:  solid #f;
-/*  border-radius: 2em;*/
-=======
-  z-index: 0;
-  float: left;
-/*  background-color: rgba(247, 90, 47, 0.7);*/
-  margin-left: 4em;
-  margin-top: 3em;
-  border:  solid ;
->>>>>>> 7f062a34ecba3c251ab92a9f4f7c1e081e7c58a8
-  width: 25em;
-  padding: .8em;
 }
 
 .results li{
