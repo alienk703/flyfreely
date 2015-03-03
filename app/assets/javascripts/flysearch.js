@@ -51,7 +51,7 @@ function flightSearch(){
               "maxStops": 0,
             }
           ],
-          // 'maxPrice': budget.to_s,
+          'maxPrice': budget,
           'solutions': 10
           }
         }
