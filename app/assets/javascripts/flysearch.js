@@ -23,7 +23,7 @@ function flightSearch(){
 
     self = this
 
-    var htmlString = "<h4>Why don't we take you to.... </h4><ul>";
+    var htmlString = "<ul>";
     $.ajax({
       url: 'https://www.googleapis.com/qpxExpress/v1/trips/search?fields=trips&key=AIzaSyATGEf7SunalI8vISMW0iVcNNHqKPtuNmw' ,
       method: 'POST',
